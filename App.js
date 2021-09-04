@@ -10,6 +10,8 @@ import SplashScreen from "./src/components/SplashScreen";
 // AUTH SCREENS 
 import Login from './src/components/auth/Login';
 import SignUp from './src/components/auth/SignUp';
+// SUBSCRIPTION SCREENS
+import BuySubscription from './src/components/subscription/BuySubscription';
 
 const Stack = createStackNavigator();
 export default App = () => {
@@ -25,6 +27,7 @@ export default App = () => {
                         <Stack.Screen name={"Splash"} component={SplashScreen} />
                         <Stack.Screen name={"Login"} component={Login} />
                         <Stack.Screen name={"SignUp"} component={SignUp} />
+                        <Stack.Screen name={"BuySubscription"} component={BuySubscription} />
                     </Stack.Navigator>
                 </NavigationContainer>
             </SafeAreaProvider>

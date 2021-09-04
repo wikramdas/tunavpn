@@ -18,7 +18,8 @@ const Login = (props) => {
     }, [])
 
     const handleOnLogin = () => {
-        alert("logged in")
+        navigation.navigate("BuySubscription")
+        // alert("logged in")
     }
     return (
         <Wrapper style={{

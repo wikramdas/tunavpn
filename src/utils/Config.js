@@ -1,6 +1,6 @@
 const Config = [
     {
-        appName: "App Name",
+        appName: "tunavpn",
         primaryColor: "#FE7601",
         secondryColor: "#0098D5",
         regularFonts: "Poppins-Regular",
