@@ -1,37 +1,28 @@
 import { CommonActions } from '@react-navigation/native';
 import React from 'react';
 import { Alert, Image, Linking, TouchableOpacity } from 'react-native';
-// import Snackbarr from 'react-native-snackbar';
-import { showSnackBar } from '@prince8verma/react-native-snackbar';
-import { secondryColor, textFont } from './Style';
+import { primaryColor, secondryColor, textFont } from './Style';
+import { Root, Popup, Toast } from 'react-native-popup-confirm-toast'
 
 export default {
-    displaySnackBar(message, background, color) {
-        showSnackBar({
-            fontFamily: textFont,
-            message: "Your custom message",
-            textColor: '#FFF',      // message text color
-            position: 'top',  // enum(top/bottom).
-            confirmText: 'OK', // button text.
-            buttonColor: '#03a9f4', // default button text color
-            duration: 4000,   // (in ms), duartion for which snackbar is visible.
-            animationTime: 250, // time duration in which snackbar will complete its open/close animation.
-            backgroundColor: background ? background : secondryColor, //background color for snackbar
-            onConfirm: () => { },    //  perform some task here on snackbar button press.
-        });
+    displayToastBar(title, message, background, color) {
+        Toast.show({
+            title: title,
+            text: message,
+            timeColor: primaryColor,
+            timing: 5000,
+            // icon: <Icon name={'check'} color={'#fff'} size={31} />,
+            position: 'top',
+            backgroundColor: background ? background : secondryColor,
+            closeDuration: true,
+            titleTextStyle: {
+                color: color ? color : 'white'
+            },
+            descTextStyle: {
+                color: color ? color : 'white'
+            }
+        })
     },
-    // showSnackbar(message, background, color) {
-    //     Snackbarr.show({
-    //         text: message,
-    //         duration: Snackbarr.LENGTH_LONG,
-    //         backgroundColor: background ? background : secondryColor,
-    //         textColor: color ? color : 'white',
-    //         action: {
-    //             text: 'Ok',
-    //             textColor: 'white',
-    //         },
-    //     });
-    // },
 
     isEmptyArray(array) {
         if (array == undefined || array == "" || array.length == 0) {

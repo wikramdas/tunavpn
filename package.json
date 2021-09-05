@@ -11,14 +11,15 @@
   },
   "dependencies": {
     "@codler/react-native-keyboard-aware-scroll-view": "^2.0.0",
-    "@prince8verma/react-native-snackbar": "^1.2.2",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.0.7",
     "react": "17.0.2",
     "react-native": "0.65.1",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-popup-confirm-toast": "^2.0.2",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.6.0",
+    "react-native-status-bar-height": "^2.6.0",
     "react-native-vector-icons": "^8.1.0",
     "react-redux": "^7.2.4",
     "redux": "^4.1.1"

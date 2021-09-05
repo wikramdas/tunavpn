@@ -1,7 +1,6 @@
-import Myutils from '../../utils/Utils'
+import Utils from '../../utils/Utils'
 import LocalStorage from '../storage/LocalStorage'
 
-const myutils = new Myutils()
 const prefs = new LocalStorage()
 export default class ApiHandler {
     sendSimpleFetchRequest(url, _body, requestType, navigation, contentType, onResponse, onError) {
@@ -36,7 +35,7 @@ export default class ApiHandler {
                     } else if (responseJson.header == "failure" && responseJson.body == "Token is Expired") {
                         onError("Token has been expired")
                         prefs.destroyUserSession()
-                        MyUtils.resetAndGo(navigation, "LogIn")
+                        Utils.resetAndGo(navigation, "LogIn")
                     } else {
                         onError(responseJson.body)
                     }

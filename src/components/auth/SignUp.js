@@ -21,6 +21,10 @@ const SignUp = (props) => {
     }, [])
 
     const handleOnSignup = () => {
+        if (Utils.isEmptyString(email)) { Utils.displayToastBar("Please enter an email address"); return }
+        if (!Utils.isValidEmail(email)) { Utils.displayToastBar("Please enter a valid email address"); return }
+        if (Utils.isEmptyString(password)) { Utils.displayToastBar("Password can't be empty"); return }
+        if (Utils.isEmptyString(confirmPassword)) { Utils.displayToastBar("Confirm password can't be empty"); return }
         alert("signed up")
     }
     return (
@@ -36,7 +40,7 @@ const SignUp = (props) => {
                     <Image
                         source={appLogo}
                         style={{
-                            width: "40%",
+                            width: "35%",
                         }}
                         resizeMode={"contain"}
                     />
@@ -96,6 +100,7 @@ const SignUp = (props) => {
                 </View>
                 <View style={[{
                     alignItems: "center", justifyContent: "center",
+                    marginBottom: 10
                 }]}>
                     <Text style={[textFont, { fontSize: 16, color: "#fff" }]}> {"Already have an account?"} </Text>
                     <TouchableOpacity

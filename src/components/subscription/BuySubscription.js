@@ -54,12 +54,7 @@ const BuySubscription = (props) => {
             <View style={{
                 flex: 1
             }}>
-                <ScrollView
-                // contentContainerStyle={{ flex: 1, flexGrow: 1 }}
-                // style={{
-                //     flex: 1
-                // }}
-                >
+                <ScrollView>
                     <View style={{
                         flex: 1
                     }}>
@@ -70,7 +65,7 @@ const BuySubscription = (props) => {
                                 justifyContent: "center",
                                 alignItems: "center",
                                 width: "100%",
-                                height: "90%", opacity: .9
+                                height: "88%", opacity: .9
                             }}
                             resizeMode={"cover"}
                         >
@@ -100,7 +95,7 @@ const BuySubscription = (props) => {
                                             activeOpacity={.8}
                                             onPress={() => handleOnSubscription(item)}
                                             style={[styles.flexRow, {
-                                                padding: 15, marginHorizontal: 15, borderRadius: 10,
+                                                padding: 14, marginHorizontal: 15, borderRadius: 10,
                                                 backgroundColor: theme.inputBG, marginVertical: 8, paddingHorizontal: 20,
                                                 borderWidth: 1, borderColor: item.isSelected ? theme.primaryColor : theme.background
                                             }]}
@@ -108,9 +103,9 @@ const BuySubscription = (props) => {
                                             <View style={{
                                                 flex: 1
                                             }}>
-                                                <Text style={[textFont, { fontSize: 16, color: theme.textLight }]}>{item.validityText} </Text>
-                                                <Text style={[boldTextFont, { fontSize: 18, color: theme.textBold, marginVertical: 3 }]}>${item.cost}<Text style={[mediumTextFont, { fontSize: 18, color: theme.text }]}>{`/${item.validity}`} </Text></Text>
-                                                <Text style={[mediumTextFont, { fontSize: 16, color: theme.text }]}>{item.text} </Text>
+                                                <Text style={[textFont, { fontSize: 15, color: theme.textLight }]}>{item.validityText} </Text>
+                                                <Text style={[boldTextFont, { fontSize: 17, color: theme.textBold, marginVertical: 3 }]}>${item.cost}<Text style={[mediumTextFont, { fontSize: 18, color: theme.text }]}>{`/${item.validity}`} </Text></Text>
+                                                <Text style={[mediumTextFont, { fontSize: 15, color: theme.text }]}>{item.text} </Text>
                                             </View>
                                             <View>
                                                 {item.isSelected ?

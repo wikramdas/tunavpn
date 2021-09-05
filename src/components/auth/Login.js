@@ -11,7 +11,7 @@ const Login = (props) => {
     const passwordRef = useRef(null)
     const { navigation } = props
     const [isLoading, setLoading] = useState(false)
-    const [email, setUserEmail] = useState("johndoe@gmail.com")
+    const [email, setUserEmail] = useState("")
     const [password, setPassword] = useState("")
 
     useEffect(() => {
@@ -19,12 +19,9 @@ const Login = (props) => {
     }, [])
 
     const handleOnLogin = () => {
-        // if (Utils.isEmptyString(email)) { Utils.displaySnackBar(""); return }
-        // if (!Utils.isValidEmail(email)) { Utils.displaySnackBar(""); return }
-        // if (Utils.isEmptyString(password)) { Utils.displaySnackBar(""); return }
-
-        // Utils.displaySnackBar()
-        // return
+        if (Utils.isEmptyString(email)) { Utils.displayToastBar("Please enter an email address"); return }
+        if (!Utils.isValidEmail(email)) { Utils.displayToastBar("Please enter a valid email address"); return }
+        if (Utils.isEmptyString(password)) { Utils.displayToastBar("Password can't be empty"); return }
         navigation.navigate("BuySubscription")
         // alert("logged in")
     }
@@ -41,7 +38,7 @@ const Login = (props) => {
                     <Image
                         source={appLogo}
                         style={{
-                            width: "55%",
+                            width: "45%",
                         }}
                         resizeMode={"contain"}
                     />
@@ -57,7 +54,7 @@ const Login = (props) => {
                         // label={"First Name"}
                         placeholder={"Email Address"}
                         value={email}
-                        onChangeText={(email) => { setUsername(email) }}
+                        onChangeText={(email) => { setUserEmail(email) }}
                         returnKeyType={"next"}
                         leftIcon={require("../../assets/images/icons/user.png")}
                         leftIconType={"image"}

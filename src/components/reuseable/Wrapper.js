@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, View } from 'react-native';
 import { connect } from 'react-redux';
+
 const Wrapper = (props) => {
     return (
         <>

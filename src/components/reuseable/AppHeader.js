@@ -18,7 +18,7 @@ const AppHeader = (props) => {
             justifyContent: "center",
             alignItems: "center",
             backgroundColor: theme.headerBGColor,
-            paddingVertical: 22,
+            paddingVertical: 12,
             paddingHorizontal: 15,
             width: '100%',
             // borderBottomWidth: .3,
