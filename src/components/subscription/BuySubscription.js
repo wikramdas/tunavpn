@@ -1,120 +1,169 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View, TextInput, ScrollView, ImageBackground } from 'react-native';
-import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scroll-view';
-import { boldTextFont, textFont } from '../../utils/Style';
-import Wrapper from '../reuseable/Wrapper';
+import { Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import FIcons from "react-native-vector-icons/Feather";
 import { connect } from 'react-redux';
-import AppHeader from '../reuseable/AppHeader';
 import Config from '../../utils/Config';
-import { FontSize, ScreenHeight, ScreenWidth, Width } from '../../utils/Dimensions';
+import { boldTextFont, mediumTextFont, textFont } from '../../utils/Style';
+import Utils from '../../utils/Utils';
+import AppHeader from '../reuseable/AppHeader';
+import Button from '../reuseable/Button';
+import Wrapper from '../reuseable/Wrapper';
 const astronautIcon = require("../../assets/images/icons/astronaut.png")
 
+const subscriptionArray = [
+    { id: 1, validity: "month", cost: "12.99", text: "After trial ends", validityText: "MONTHLY", isSelected: true },
+    { id: 2, validity: "year", cost: "79.99", text: "After trial ends", validityText: "YEARLY", isSelected: false },
+]
 const BuySubscription = (props) => {
     const passwordRef = useRef(null)
     const { navigation, theme } = props
     const [isLoading, setLoading] = useState(false)
-    const [email, setUserEmail] = useState("johndoe@gmail.com")
-    const [password, setPassword] = useState("")
+
+    const [subscriptionList, setSubsriptionList] = useState(subscriptionArray)
+    const [renderView, setRender] = useState(0)
 
     useEffect(() => {
 
-    }, [])
+    }, [renderView])
 
-    const handleOnLogin = () => {
-        alert("logged in")
+    const handleOnSubscription = (item) => {
+        var tempArr = []
+        subscriptionList.map((i, index) => {
+            if (i.id == item.id) {
+                i.isSelected = true
+            } else {
+                i.isSelected = false
+            }
+            tempArr.push(i)
+        })
+        setRender(prev => prev + 1)
+        setSubsriptionList(tempArr)
     }
     return (
         <Wrapper>
             <AppHeader
                 title={Config.appName}
                 navigation={navigation}
+                isShare={true}
+                isBell={true}
+                onSharePress={() => {
+                    return
+                    alert("share something")
+                }}
             />
             <View style={{
                 flex: 1
             }}>
                 <ScrollView
-                    contentContainerStyle={{
-                        flex: 1
-                    }}
+                // contentContainerStyle={{ flex: 1, flexGrow: 1 }}
+                // style={{
+                //     flex: 1
+                // }}
                 >
-                    <ImageBackground
-                        source={astronautIcon}
-                        style={{
-                            // flex: 1,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "100%",
-                            height: "85%",
-                        }}
-                        resizeMode={"cover"}
-                    >
-                        <View style={{
-                            position: "absolute", top: 0, left: 0,
-                            paddingHorizontal: Width(4)
-                        }}>
-                            <Text style={{
-                                ...boldTextFont, color: theme.textBold,
-                                fontSize: FontSize(16)
-                            }}>Your First 7 days free</Text>
-                            <Text style={{
-                                ...textFont, color: theme.text,
-                                fontSize: FontSize(12)
-                            }}>No commitment, cancel anytime</Text>
-                        </View>
-                    </ImageBackground>
-                </ScrollView>
-            </View>
-            <KeyboardAwareScrollView
-                contentContainerStyle={{ flex: 1 }}
-                style={styles.innerMainView}
-                keyboardShouldPersistTaps={"always"}
-                showsVerticalScrollIndicator={false}>
-
-                <View style={{ justifyContent: "flex-start", marginVertical: 30 }}>
-                    <Text style={[{ color: "#fff", ...boldTextFont, fontSize: 23 }]}>{`Sign In`}</Text>
-                </View>
-                <View style={{ flex: 1 }}>
                     <View style={{
-                        alignItems: "flex-end",
+                        flex: 1
                     }}>
-                        <TouchableOpacity
-                            activeOpacity={0.5}
+                        <ImageBackground
+                            source={astronautIcon}
                             style={{
-                                marginBottom: 20,
+                                // flex: 1,
+                                justifyContent: "center",
+                                alignItems: "center",
+                                width: "100%",
+                                height: "90%", opacity: .9
                             }}
-                            onPress={() => { alert("Forgot Password") }}>
-                            <Text style={[textFont, { fontSize: 17, color: "#fff" }]}> {"Forgot Password?"} </Text>
-                        </TouchableOpacity>
+                            resizeMode={"cover"}
+                        >
+                            <View style={{
+                                position: "absolute", top: 0, left: 0,
+                                paddingHorizontal: 15, marginVertical: 10
+                            }}>
+                                <Text style={{
+                                    ...boldTextFont, color: theme.textBold,
+                                    fontSize: 19
+                                }}>Your First 7 days free</Text>
+                                <Text style={{
+                                    ...textFont, color: theme.text,
+                                    fontSize: 14
+                                }}>No commitment, cancel anytime</Text>
+                            </View>
+                        </ImageBackground>
+
+                        <View style={{
+                            flex: 1,
+                        }}>
+                            <View>
+                                {!Utils.isEmptyArray(subscriptionList) && subscriptionList.map((item, index) => {
+                                    return (
+                                        <TouchableOpacity
+                                            key={index.toString()}
+                                            activeOpacity={.8}
+                                            onPress={() => handleOnSubscription(item)}
+                                            style={[styles.flexRow, {
+                                                padding: 15, marginHorizontal: 15, borderRadius: 10,
+                                                backgroundColor: theme.inputBG, marginVertical: 8, paddingHorizontal: 20,
+                                                borderWidth: 1, borderColor: item.isSelected ? theme.primaryColor : theme.background
+                                            }]}
+                                        >
+                                            <View style={{
+                                                flex: 1
+                                            }}>
+                                                <Text style={[textFont, { fontSize: 16, color: theme.textLight }]}>{item.validityText} </Text>
+                                                <Text style={[boldTextFont, { fontSize: 18, color: theme.textBold, marginVertical: 3 }]}>${item.cost}<Text style={[mediumTextFont, { fontSize: 18, color: theme.text }]}>{`/${item.validity}`} </Text></Text>
+                                                <Text style={[mediumTextFont, { fontSize: 16, color: theme.text }]}>{item.text} </Text>
+                                            </View>
+                                            <View>
+                                                {item.isSelected ?
+                                                    <Image
+                                                        source={require("../../assets/images/icons/check-mark.png")}
+                                                        style={{
+                                                            width: 30, height: 30
+                                                        }}
+                                                    />
+                                                    :
+                                                    <FIcons name={"circle"} color={theme.iconColor} size={30} />
+                                                }
+                                            </View>
+                                        </TouchableOpacity>
+                                    )
+                                })}
+                            </View>
+
+                            <View style={[{
+                                alignItems: "center", justifyContent: "center",
+                                marginVertical: 20
+                            }]}>
+                                <Text style={[mediumTextFont, { fontSize: 18, color: theme.primaryColor }]}> {"Deliver more faster server & No ads"} </Text>
+                                <TouchableOpacity
+                                    activeOpacity={0.5}
+                                    style={{
+                                        // marginBottom: Height(2),
+                                    }}
+                                    disabled={true}
+                                    onPress={() => { navigation.navigate("SignUp") }}>
+                                    <Text style={[mediumTextFont, { fontSize: 16, color: theme.textLight }]}> {"Plan auto renews monthly"} </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
                     </View>
-                    <TouchableOpacity
-                        activeOpacity={.8}
-                        onPress={() => handleOnLogin()}
-                        style={{
-                            backgroundColor: "#2E8ADB", borderRadius: 100,
-                            alignItems: "center", padding: 12, marginVertical: 20
+                </ScrollView>
+                <View style={{
+                    justifyContent: "flex-end",
+                    marginHorizontal: 15,
+                }}>
+                    <Button
+                        label={"Start Subscription"}
+                        onPress={() => { handleOnSignup() }}
+                        loader={isLoading}
+                        disabled={isLoading}
+                        loaderSize={25}
+                        txtStyle={{}}
+                        bgStyle={{
+                            // marginVertical: Height(4)
                         }}
-                    >
-                        <Text style={{
-                            ...textFont, fontSize: 18, color: "#fff"
-                        }}>Sign In</Text>
-                    </TouchableOpacity>
+                    />
                 </View>
-                <View style={[{
-                    flex: .2,
-                    alignItems: "center", justifyContent: "center",
-                    marginVertical: 10
-                }]}>
-                    <Text style={[textFont, { fontSize: 16, color: "#fff" }]}> {"Don’t have an account?"} </Text>
-                    <TouchableOpacity
-                        activeOpacity={0.5}
-                        style={{
-                            // marginBottom: Height(2),
-                        }}
-                        onPress={() => { navigation.navigate("SignUp") }}>
-                        <Text style={[boldTextFont, { fontSize: 16, color: "#2E8ADB" }]}> {"Sign Up"} </Text>
-                    </TouchableOpacity>
-                </View>
-            </KeyboardAwareScrollView>
+            </View>
         </Wrapper>
     )
 }

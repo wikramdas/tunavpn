@@ -4,6 +4,7 @@ import { KeyboardAwareScrollView } from '@codler/react-native-keyboard-aware-scr
 import { boldTextFont, textFont } from '../../utils/Style';
 import InputText from "../reuseable/InputText"
 import Wrapper from '../reuseable/Wrapper';
+import Utils from '../../utils/Utils';
 const appLogo = require("../../assets/images/icons/title-logo.png")
 
 const Login = (props) => {
@@ -18,6 +19,12 @@ const Login = (props) => {
     }, [])
 
     const handleOnLogin = () => {
+        // if (Utils.isEmptyString(email)) { Utils.displaySnackBar(""); return }
+        // if (!Utils.isValidEmail(email)) { Utils.displaySnackBar(""); return }
+        // if (Utils.isEmptyString(password)) { Utils.displaySnackBar(""); return }
+
+        // Utils.displaySnackBar()
+        // return
         navigation.navigate("BuySubscription")
         // alert("logged in")
     }

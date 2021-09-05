@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@codler/react-native-keyboard-aware-scroll-view": "^2.0.0",
+    "@prince8verma/react-native-snackbar": "^1.2.2",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.0.7",
     "react": "17.0.2",

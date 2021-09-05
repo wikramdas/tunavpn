@@ -2,10 +2,24 @@ import { CommonActions } from '@react-navigation/native';
 import React from 'react';
 import { Alert, Image, Linking, TouchableOpacity } from 'react-native';
 // import Snackbarr from 'react-native-snackbar';
-import { Width } from './Dimensions';
-import { secondryColor } from './Style';
+import { showSnackBar } from '@prince8verma/react-native-snackbar';
+import { secondryColor, textFont } from './Style';
 
 export default {
+    displaySnackBar(message, background, color) {
+        showSnackBar({
+            fontFamily: textFont,
+            message: "Your custom message",
+            textColor: '#FFF',      // message text color
+            position: 'top',  // enum(top/bottom).
+            confirmText: 'OK', // button text.
+            buttonColor: '#03a9f4', // default button text color
+            duration: 4000,   // (in ms), duartion for which snackbar is visible.
+            animationTime: 250, // time duration in which snackbar will complete its open/close animation.
+            backgroundColor: background ? background : secondryColor, //background color for snackbar
+            onConfirm: () => { },    //  perform some task here on snackbar button press.
+        });
+    },
     // showSnackbar(message, background, color) {
     //     Snackbarr.show({
     //         text: message,
@@ -37,13 +51,13 @@ export default {
                 overflow: 'hidden',
                 height: height,
                 width: width,
-                borderRadius: Width(50),
+                borderRadius: 100,
             }}>
             <Image
                 style={{
                     height: height,
                     width: width,
-                    borderRadius: Width(50),
+                    borderRadius: 100,
                     backgroundColor: 'rgba(0,0,0,0.1)'
                 }}
                 source={imgPath}

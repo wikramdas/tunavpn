@@ -1032,6 +1032,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
+"@prince8verma/react-native-snackbar@^1.2.2":
+  "integrity" "sha1-0/Ani4mxKcdKvimJRJtyZ0aK7wU="
+  "resolved" "https://registry.npmjs.org/@prince8verma/react-native-snackbar/-/react-native-snackbar-1.2.2.tgz"
+  "version" "1.2.2"
+  dependencies:
+    "react-native-simple-events" "^1.0.1"
+
 "@react-native-community/cli-debugger-ui@^6.0.0-rc.0":
   "integrity" "sha512-achYcPPoWa9D02C5tn6TBzjeY443wQTyx37urptc75JpZ7gR5YHsDyIEEWa3DDYp1va9zx/iGg+uZ/hWw07GAw=="
   "resolved" "https://registry.npmjs.org/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-6.0.0-rc.0.tgz"
@@ -5771,6 +5778,11 @@
   "version" "3.6.0"
   dependencies:
     "warn-once" "^0.1.0"
+
+"react-native-simple-events@^1.0.1":
+  "integrity" "sha1-fmNszRt+AwKct43J1Z0ACfc6O9Y="
+  "resolved" "https://registry.npmjs.org/react-native-simple-events/-/react-native-simple-events-1.0.1.tgz"
+  "version" "1.0.1"
 
 "react-native-vector-icons@^8.1.0":
   "integrity" "sha512-sHIdBB6Y0dHaot2fMXgy5J/hhCn5YuyN7SKDNFgPzL8KA1oF2/v7mgYMavnK7LIIs2dJoGnDANKf61dsU+TZlg=="

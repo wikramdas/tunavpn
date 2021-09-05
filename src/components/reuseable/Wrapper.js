@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Height } from '../../utils/Dimensions';
 const Wrapper = (props) => {
     return (
         <>
@@ -17,7 +16,7 @@ const Wrapper = (props) => {
                 <SafeAreaView style={[{
                     flex: 1,
                     backgroundColor: props.theme.background,
-                    paddingTop: Height(3.5)
+                    paddingTop: 20
                 }, props.style]}>
                     <StatusBar backgroundColor={"transparent"} translucent={true} />
                     {props.children}

@@ -5,7 +5,6 @@ import { boldTextFont, textFont } from '../../utils/Style';
 import InputText from "../reuseable/InputText"
 import Wrapper from '../reuseable/Wrapper';
 import Button from "../reuseable/Button"
-import { FontSize, Height } from '../../utils/Dimensions';
 const appLogo = require("../../assets/images/icons/logo.png")
 
 const SignUp = (props) => {
@@ -88,10 +87,10 @@ const SignUp = (props) => {
                         onPress={() => { handleOnSignup() }}
                         loader={isLoading}
                         disabled={isLoading}
-                        loaderSize={FontSize(20)}
+                        loaderSize={20}
                         txtStyle={{}}
                         bgStyle={{
-                            marginVertical: Height(4)
+                            marginVertical: 20
                         }}
                     />
                 </View>
@@ -102,7 +101,6 @@ const SignUp = (props) => {
                     <TouchableOpacity
                         activeOpacity={0.5}
                         style={{
-                            // marginBottom: Height(2),
                         }}
                         onPress={() => { navigation.navigate("Login") }}>
                         <Text style={[boldTextFont, { fontSize: 16, color: "#2E8ADB" }]}> {"Sign In"} </Text>
@@ -117,7 +115,6 @@ const styles = StyleSheet.create({
         flexDirection: "row", alignItems: "center"
     },
     innerMainView: {
-        // paddingVertical: Height(4),
         flex: 1, flexDirection: "column",
         paddingHorizontal: 20
     },

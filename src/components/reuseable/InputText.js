@@ -5,11 +5,10 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import FIcons from 'react-native-vector-icons/Feather'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { connect } from 'react-redux'
-import { FontSize, Height, Width } from '../../utils/Dimensions'
 import { textFont } from '../../utils/Style'
 import Utils from '../../utils/Utils'
-const rightIconSize = FontSize(15)
-const leftIconSize = FontSize(15)
+const rightIconSize = 16
+const leftIconSize = 16
 const InputText = (props) => {
     const [blurOnSubmit, setBlurOnSubmit] = useState(props.blurOnSubmit ? props.blurOnSubmit : true)
     const [isPassword, setPassword] = useState(props.isPassword ? props.isPassword : false)
@@ -75,32 +74,29 @@ const InputText = (props) => {
 
     return (
         <View style={{
-            marginVertical: Height(1.7)
+            marginVertical: 12
         }}>
             {label != "" &&
-                <Text style={[textFont, { fontSize: FontSize(12), color: theme.text, marginBottom: Height(.8) }]}> {label} </Text>
+                <Text style={[textFont, { fontSize: 16, color: theme.text, marginBottom: 10 }]}> {label} </Text>
             }
             <View style={[{
                 flexDirection: "row", alignItems: "center", justifyContent: "center",
-                // marginBottom: (Platform.OS == "ios" ? 10 : 0),
                 backgroundColor: theme.inputBG,
-                borderRadius: Width(100),
-                padding: Width(1.2),
-                // borderColor: borderColor,
-                // borderWidth: .5, 
-                marginBottom: Height(1)
+                borderRadius: 100,
+                padding: 5,
+                marginBottom: 5
             }, bgStyle]}>
                 {!Utils.isEmptyString(leftIcon) &&
                     <TouchableOpacity activeOpacity={0.7} onPress={() => {
                         leftIconPress()
                     }}
-                        style={{ marginLeft: Width(2) }}
+                        style={{ marginLeft: 10 }}
                     >
                         {leftIconType == "image" ?
                             <Image
                                 source={leftIcon}
                                 style={{
-                                    height: Width(5), width: Width(5)
+                                    height: 20, width: 20
                                 }}
                                 resizeMode={"contain"}
                             />
@@ -123,9 +119,9 @@ const InputText = (props) => {
                     ref={props.onRef}
                     style={{
                         ...textFont,
-                        flex: 1, fontSize: FontSize(12),
-                        paddingLeft: Width(3), padding: Width(2.5),
-                        paddingTop: (Platform.OS == "ios" && multiline) ? Height(1.5) : Height(1),
+                        flex: 1, fontSize: 16,
+                        paddingLeft: 12, padding: 10,
+                        paddingTop: (Platform.OS == "ios" && multiline) ? 15 : 10,
                         color: editable == "false" ? theme.textLight : theme.text
                     }}
                     maxLength={maxLength}
@@ -162,7 +158,7 @@ const InputText = (props) => {
                                 rightIconPress()
                             }
                         }}
-                            style={{ marginRight: Width(4) }}
+                            style={{ marginRight: 20 }}
                         >
                             {rightIconType == "fontawesome" ?
                                 <FontAwesome name={rightIcon} size={rightIconSize} color={rightIconColor} />

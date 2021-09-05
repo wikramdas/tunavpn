@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import Config from './Config';
-import { FontSize, Height, Width } from './Dimensions';
 
 const primaryColor = Config.primaryColor
 const secondryColor = Config.secondryColor
@@ -81,16 +80,16 @@ const EmptyState = StyleSheet.create({
         flex: 1, alignItems: 'center', backgroundColor: 'white', justifyContent: 'center'
     },
     image: {
-        height: Width(50),
-        width: Width(50)
+        height: 100,
+        width: 100
     },
     headText: {
         ...boldTextFont,
-        fontSize: FontSize(13)
+        fontSize: 15
     },
     text: {
         ...textFont,
-        fontSize: FontSize(10)
+        fontSize: 12
     }
 })
 const formDefault = StyleSheet.create({

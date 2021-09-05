@@ -1,14 +1,12 @@
-import React, { Component } from 'react'
-import { Text, TouchableOpacity, View, Image } from 'react-native'
-import { connect } from 'react-redux'
+import React from 'react'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import FIcons from 'react-native-vector-icons/Feather'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import { textFont, mediumTextFont } from '../../utils/Style'
-import { FontSize, Height, Width } from '../../utils/Dimensions';
-import myUtils from '../../utils/Utils'
+import { connect } from 'react-redux'
+import { mediumTextFont } from '../../utils/Style'
 import LoadingView from '../reuseable/LoadingView'
-const iconSize = FontSize(18)
+const iconSize = 20
 const MyButton = (props) => {
     const { onPress, bgStyle, txtStyle, label, isFocused, badge,
         theme, disabled, loader, leftIcon, leftIconType, leftIconColor, leftIconSize,
@@ -25,10 +23,10 @@ const MyButton = (props) => {
         >
             <View
                 style={[{
-                    alignItems: "center", borderRadius: Width(100),
-                    justifyContent: "center", marginVertical: Height(.5),
+                    alignItems: "center", borderRadius: 100,
+                    justifyContent: "center", marginVertical: 5,
                     backgroundColor: disabled ? theme.disableBtnBGColor : theme.btnBGColor,
-                    padding: Width(disabled ? 0 : 2), height: Height(6)
+                    padding: disabled ? 0 : 13,
                 },
                 bgStyle && bgStyle
                 ]}
@@ -36,8 +34,6 @@ const MyButton = (props) => {
                 {loader ?
                     <View style={[{
                         flex: 1,
-                        // paddingHorizontal: Width(2),
-                        // paddingVertical: Height(.5),
                     }]}>
                         <LoadingView size={loaderSize} />
                     </View>
@@ -57,7 +53,7 @@ const MyButton = (props) => {
                                             <View style={{ flex: 1, alignItems: "center" }}>
                                                 <Image
                                                     source={leftIcon}
-                                                    style={[{ width: Width(8), height: Width(8), tintColor: theme.primaryColor }, leftIconStyle]}
+                                                    style={[{ width: 20, height: 20, tintColor: theme.primaryColor }, leftIconStyle]}
                                                     resizeMode={"contain"}
                                                 />
                                             </View>
@@ -67,9 +63,7 @@ const MyButton = (props) => {
                             </>
                         }
                         <Text style={[{
-                            ...mediumTextFont, fontSize: FontSize(16),
-                            // paddingHorizontal: Width(2),
-                            // paddingVertical: Height(.5), 
+                            ...mediumTextFont, fontSize: 18,
                             color: theme.btnTextColor, textAlign: "center"
                         },
                         txtStyle && txtStyle
